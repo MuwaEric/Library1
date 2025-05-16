@@ -1,0 +1,42 @@
+{% extends "base_generic.html" %}
+
+{% block title %}
+    <title>Login|Mwesi Library</title>
+{% endblock %}
+
+{% block content  %}
+<br>
+    {% if form.errors %}
+        <p>The username and password did not match. Please try again </p>
+    {% endif %}
+
+    {% if next %}
+        {% if user.is_authenticated %}
+            <p>Your account does not have access to this page. Login with an account that has access to proceed </p>
+        {% else %}
+            <p>Please Login To View This Page</p>
+        {% endif %}
+    {% endif %}
+
+    <form method="POST" action="{% url 'login' %}">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td> {{ form.username.label_tag }} </td>
+                <td> {{ form.username }} </td>
+            </tr>
+            
+            <tr>
+                <td> {{ form.password.label_tag }} </td>
+                <td> {{ form.password }} </td>
+            </tr>
+        </table>
+        <input type="submit" value="login">
+        <input type="hidden" name="next" value={{ next }}>
+
+        <p><a href="{% url 'password_reset' %}">Lost password</a></p>
+
+    </form>
+{% endblock  %}
+
+

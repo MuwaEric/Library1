@@ -1,12 +1,18 @@
 from django.shortcuts import render
 from .models import Book, Genre, BookInstance, Author
 from django.views import generic
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 def index(request):
     # generate counts of some of the main objects
     num_books = Book.objects.all().count()
     num_instances = BookInstance.objects.all().count()
+    num_authors = Author.objects.count()
+    
+    num_visits = request.session.get("num_visits", 0)
+    num_visits += 1
+    request.session['num_visits'] = num_visits
     
     # Available books (status = 'a')
     num_instances_available = BookInstance.objects.filter(status__exact="a").count()
@@ -22,17 +28,21 @@ def index(request):
     context = {
         "num_books" : num_books,
         "num_instances" : num_instances,
+        "num_auhtor": num_authors,
         "num_instances_available" : num_instances_available,
         "num_authors" : num_authors,
         "c_genre" : c_genre, 
         "genre_with_word_action" : genre_with_word_action, 
-        "book_with_word_curse" : book_with_word_curse,  
+        "book_with_word_curse" : book_with_word_curse,
+        "num_visits" : num_visits,
     }
     
     return render(request, "index.html", context)
 
 class BookListView(generic.ListView):
     model = Book
+    
+    paginate_by = 5
     # context_object_name = "book_list"  #name to apply in the template
     # queryset = Book.objects.all()[:5]
     # template_name = "catalog/book_list.html"
@@ -47,4 +57,11 @@ class BookListView(generic.ListView):
     
 class BookDetailView(generic.DetailView):
     model = Book
+    
+class AuthorListView(generic.ListView):
+    model = Author
+    paginate_by = 5
+    
+class AuthorDetailView(generic.DetailView):
+    model = Author
 

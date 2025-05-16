@@ -15,10 +15,12 @@
         <li><strong>Books:</strong> {{ num_books }}</li>
         <li><strong>Copies:</strong> {{ num_instances }} </li>
         <li><strong>Copies available:</strong> {{ num_instances_available }} </li>
+        <li><strong>Total Number Of Authors:</strong> {{ num_authors }} </li>
         <li><strong>Authors:</strong> {{ num_books }} </li>
         <li><strong>Genre with C:</strong> {{ c_genre }} </li>
         <li><strong>Genres with word Action:</strong> {{ genre_with_word_action }} </li>
         <li><strong>Books with the word curse:</strong> {{ book_with_word_curse }} </li>
     </ul>
+    <p>You have visited {{ num_visits }} time{{ num_visits|pluralize}} </p>
 
 {% endblock  %}

@@ -1,0 +1,23 @@
+{% extends "base_generic.html" %}
+
+{% block title %}
+    <title>{{ author.first_name }} {{ author.last_name }} information || Mwesi Library</title>
+{% endblock  %}
+
+{% block content %}
+    <br>
+    <h5>Author: {{ author.first_name }} {{ author.last_name}} </h5>
+    <p>Born: {{ author.date_of_birth }} </p>
+
+    {% if author.date_of_death %} 
+        <p>Dead: {{ author.date_of_death }} </p>
+    {% endif %}
+
+    <h5>Books</h5>
+    {% for author_book in author.book_set.all %}
+        <p> <a href="{{ author_book.get_absolute_url }}">{{ author_book.title }} </a> </p>
+        <p> {{author_book.summary }} </p>
+    {% endfor %}
+    
+{% endblock  %}
+
