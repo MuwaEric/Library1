@@ -14,10 +14,32 @@
     {% endif %}
 
     <h5>Books</h5>
-    {% for author_book in author.book_set.all %}
-        <p> <a href="{{ author_book.get_absolute_url }}">{{ author_book.title }} </a> </p>
-        <p> {{author_book.summary }} </p>
-    {% endfor %}
+    {% if author.book_set.exists %}
+        {% for author_book in author.book_set.all %}
+            <p> <a href="{{ author_book.get_absolute_url }}">{{ author_book.title }} </a> </p>
+            <p> {{author_book.summary }} </p>
+        {% endfor %}
+    {% else %}
+        <p>Author has no books in store </p>
+    {% endif %}
+{% endblock  %}
+
+{% block sidebar %}
+    {{ block.super }}
+
+    {% if perms.catalog.change_author or perms.catalog.delete_author %}
+        <hr>
+        <ul class="sidebar-nav">
+            {% if perms.catalog.change_author %}
+                <p><a href="{% url "author-update" author.id %}">Update author</a>
+            {% endif %}
+
+            {% if not author.book_set.all and perms.catalog.delete_author %}
+                    <p><a href="{% url "author-delete" author.id %}">Delete author</a>
+            {% endif %}
+            
+        </ul>
     
+    {% endif %}
 {% endblock  %}
 

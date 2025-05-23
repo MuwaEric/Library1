@@ -25,7 +25,10 @@
                 <ul class="sidebar-nav">
                     <li><a href="{% url 'index' %}"> Home </a></li>
                     <li><a href="{% url 'books' %}"> All books </a></li>
+                    <li><a href="{% url 'bookinstances' %}">All copies</a></li>
                     <li><a href="{% url 'authors' %}">All authors</a></li>
+                    <li><a href="{% url 'genres' %}">All genres</a></li>
+                    <li><a href="{% url 'languages' %}">All languages</a></li>
                 </ul>
 
                 <ul class="sidebar-nav">
@@ -45,8 +48,23 @@
                 </ul>
 
                 {% if user.is_staff %}
+                <hr>
+                <ul class="sidebar-nav">
                 <h6>Staff<h6>
                   <li> <a href="{% url "borrowed-books" %}">All borrowed books </a> </li>
+                  <hr>
+                  {% if "perms.catalog.add_author" %}
+                    <li><a href="{% url 'author-create' %}">Create author</a></li>
+                  {% endif %}
+
+                  {% if "perms.catalog.add_book" %}
+                    <li><a href="{% url 'book-create' %}">Create Book</a></li>
+                  {% endif %}
+
+                  {% if perms.catalog.add_genre %}
+                    <li><a href="{% url 'genre-create' %}">Create Genre</a>
+                  {% endif %}
+                </ul>
                 {% endif %}
             {% endblock %}
            </div>
