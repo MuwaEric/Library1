@@ -217,8 +217,50 @@ class GenreDelete(PermissionRequiredMixin, DeleteView):
     def form_valid(self, form):
         try:
             self.object.delete()
+            return HttpResponseRedirect(self.success_url)
         except Exception as e:
             reverse("genre-detail", kwargs={"pk":self.object.pk})
+            
+class BookInstanceCreate(PermissionRequiredMixin, CreateView):
+    model = BookInstance
+    fields = "__all__"
+    permission_required = "catalog.add_bookinstance"
+    
+    
+class BookInstanceUpdate(PermissionRequiredMixin, UpdateView):
+    model = BookInstance
+    # fields = "__all__"
+    fields = ['imprint', 'due_back', 'borrower', 'status']
+    permission_required = 'catalog.change_bookinstance'
+
+class BookInstanceDelete(PermissionRequiredMixin, DeleteView):
+    model = BookInstance
+    success_url = ("bookinstances")
+    permission_required = "catalog.delete_bookinstance"
+    
+    def form_valid(self, form):
+        try:
+            self.object.delete()
+            return HttpResponseRedirect(self.success_url)
+        
+        except Exception as e:
+            return reverse("bookinstance-detail", kwargs={"pk":self.object.pk})
+        
+class LanguageCreate(PermissionRequiredMixin, CreateView):
+    model = Language
+    fields = ['name', ]
+    permission_required = 'catalog.add_language'
+    
+class LanguageUpdate(PermissionRequiredMixin, UpdateView):
+    model = Language
+    fields = ['name', ]
+    permission_required = 'catalog.change_language'
+    
+class LanguageDelete(PermissionRequiredMixin, DeleteView):
+    model = Language
+    success_url = reverse_lazy('languages')
+    permission_required = 'catalog.delete_language'
+
     
             
    

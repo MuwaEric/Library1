@@ -1,6 +1,7 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
+{% if genre %}
 
 <h1>Delete Genre: {{ genre }}</h1>
 
@@ -10,5 +11,5 @@
   {% csrf_token %}
   <input type="submit" action="" value="Yes, delete.">
 </form>
-
+{% endif %}
 {% endblock %}

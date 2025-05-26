@@ -96,6 +96,10 @@ class BookInstance(models.Model):
         "check if book is overdue"
         return bool(self.due_back and date.today() > self.due_back)
     
+    def get_absolute_url(self):
+        return reverse("bookinstance-detail", kwargs={"pk": self.pk})
+    
+    
 
     
 

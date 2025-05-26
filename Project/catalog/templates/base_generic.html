@@ -64,6 +64,14 @@
                   {% if perms.catalog.add_genre %}
                     <li><a href="{% url 'genre-create' %}">Create Genre</a>
                   {% endif %}
+
+                  {% if perms.catalog.add_bookinstance %}
+                      <li><a href="{% url 'bookinstance-create' %}">Create Book Copy</a></li>
+                  {% endif %}
+
+                  {% if perms.catalog.add_language %}
+                      <li><a href="{% url 'language-create' %}">Create Language</a></li>
+                  {% endif %}
                 </ul>
                 {% endif %}
             {% endblock %}
