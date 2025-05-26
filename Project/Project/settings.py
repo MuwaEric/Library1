@@ -35,7 +35,9 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", 'django-insecure-q(o6^8)+=p-#lz
 # DEBUG = True
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["muwaEric.pythonanywhere.com", '127.0.0.1']
+
+CRSF_TRUSTED_ORIGINS = ['https://muwaEric.pythonanywhere.com']
 
 
 # Application definition
