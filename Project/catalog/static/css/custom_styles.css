@@ -1,0 +1,166 @@
+/* Custom styles for Mwesi Library */
+
+/* General Text Visibility & Contrast */
+body {
+  color: #333; /* Default dark gray text color */
+  background-color: #fff; /* Default white background */
+}
+
+a {
+  color: #007bff; /* Bootstrap primary blue for links */
+  text-decoration: none; /* Remove underline by default */
+}
+
+a:hover {
+  color: #0056b3; /* Darker blue on hover */
+  text-decoration: underline; /* Underline on hover for clarity */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #212529; /* Dark color for headings, Bootstrap's default heading color */
+  margin-bottom: 0.75rem; /* Spacing below headings */
+}
+
+/* General Layout Improvements */
+.content-wrapper {
+  padding: 20px;
+}
+
+p {
+  margin-bottom: 1rem; /* Spacing below paragraphs */
+}
+
+.pagination {
+  margin-top: 20px; /* Spacing above pagination block */
+  display: flex; /* Use flexbox for alignment if not already */
+  justify-content: center; /* Center pagination if desired */
+}
+
+.page-links {
+  display: inline-block; /* Ensure page links are on one line */
+  padding: 5px 0;
+}
+
+.page-links a, .page-links span {
+  padding: 8px 12px;
+  margin: 0 2px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.page-links a:hover {
+  background-color: #f0f0f0;
+  color: #0056b3;
+}
+
+.page-current {
+  background-color: #007bff;
+  color: white !important; /* Ensure text is white */
+  border-color: #007bff;
+  font-weight: bold;
+}
+
+/* Sidebar Styles */
+.sidebar-nav {
+    margin-top: 20px;
+    padding: 15px; /* Adjusted padding */
+    list-style: none;
+    background-color: #f8f9fa; /* Added background color */
+    max-width: 250px; /* Added max-width */
+  }
+
+.sidebar-nav a {
+  display: block;
+  padding: 8px 15px;
+  text-decoration: none; /* Remove underline from links */
+  color: #333; /* Link color */
+}
+
+.sidebar-nav a:hover {
+  background-color: #e9ecef; /* Hover effect */
+}
+
+.sidebar-nav h6 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-size: 1.1em; /* Adjust size as needed */
+  color: #555; /* Darker color for hierarchy */
+}
+
+/* Logout Form Button Style (within sidebar context) */
+#logout-form {
+  display: inline;
+}
+#logout-form button {
+  padding: 8px 15px; /* Adjusted to match link padding for consistency */
+  margin: 5px 0; /* Add some margin */
+  background-color: #007bff; /* Using theme button color */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#logout-form button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Table Styles */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+  /* Text color for th will be inherited from body or general h1-h6, which is dark */
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333; /* Explicitly set label color */
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Ensures padding and border don't add to width */
+}
+
+/* General Button Styles (can apply to form buttons) */
+button,
+input[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  background-color: #0056b3;
+}

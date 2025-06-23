@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Import a modern font */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 
@@ -452,3 +453,7 @@ body.dark-mode .no-items-message {
   background-color: var(--sidebar-bg-dark);
   border-color: var(--border-color-dark);
 }
+=======
+/* Original styles.css content has been moved to custom_styles.css */
+/* This file can be used for any future base styles if needed. */
+>>>>>>> ee89502849f7902c14d2da93d485c5fe7a69ad06
