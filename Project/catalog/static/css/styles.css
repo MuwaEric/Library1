@@ -1,13 +1,454 @@
-.sidebar-nav {
-    margin-top: 20px;
-    padding: 0;
-    list-style: none;
-  }
+/* Import a modern font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 
+/* Define color variables for light and dark themes */
+:root {
+  --font-family-sans-serif: 'Roboto', sans-serif;
+
+  /* Light Theme (Default) */
+  --primary-color-light: #007bff;
+  --secondary-color-light: #6c757d;
+  --background-color-light: #ffffff;
+  --text-color-light: #212529;
+  --link-color-light: #0056b3;
+  --border-color-light: #dee2e6;
+  --sidebar-bg-light: #f8f9fa;
+  --sidebar-link-color-light: #333;
+  --sidebar-link-hover-bg-light: #e9ecef;
+
+  /* Dark Theme */
+  --primary-color-dark: #4dabf7; /* Lighter blue for dark mode */
+  --secondary-color-dark: #adb5bd;
+  --background-color-dark: #1a1a1a; /* Darker background */
+  --text-color-dark: #f8f9fa; /* Lighter text */
+  --link-color-dark: #74c0fc;
+  --border-color-dark: #495057; /* Darker border */
+  --sidebar-bg-dark: #2c2c2c; /* Darker sidebar */
+  --sidebar-link-color-dark: #f1f1f1;
+  --sidebar-link-hover-bg-dark: #3a3a3a;
+}
+
+/* Apply theme variables */
+body {
+  font-family: var(--font-family-sans-serif);
+  background-color: var(--background-color-light);
+  color: var(--text-color-light);
+  margin: 0;
+  padding-top: 1rem; /* Add some padding at the top */
+  padding-bottom: 1rem; /* Add some padding at the bottom */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth theme transition */
+}
+
+.container-fluid {
+    max-width: 1200px; /* Constrain width for better readability on large screens */
+    margin: auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primary-color-light);
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--link-color-light);
+  text-decoration: none; /* Remove default underline */
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: var(--primary-color-light);
+  text-decoration: underline;
+}
+
+/* Sidebar Navigation */
+.sidebar-nav {
+  margin-top: 0; /* Align with top padding of body */
+  padding: 0;
+  list-style: none;
+  background-color: var(--sidebar-bg-light);
+  border-radius: 0.25rem; /* Slightly rounded corners */
+  padding: 1rem;
+  border: 1px solid var(--border-color-light);
+  height: 100%; /* Make sidebar full height of its column */
+}
+
+.sidebar-nav li {
+  margin-bottom: 0.5rem;
+}
+
+.sidebar-nav a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: var(--sidebar-link-color-light);
+  border-radius: 0.25rem;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.sidebar-nav a:hover {
+  background-color: var(--sidebar-link-hover-bg-light);
+  color: var(--primary-color-light);
+  text-decoration: none;
+}
+
+.sidebar-nav h6 {
+    color: var(--secondary-color-light);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    padding-left: 1rem;
+}
+
+/* Logout form styling */
 #logout-form {
   display: inline;
 }
+
 #logout-form button {
-  padding: 0;
+  padding: 0.5rem 1rem; /* Match link padding */
   margin: 0;
+  background: none;
+  border: none;
+  color: var(--sidebar-link-color-light); /* Match link color */
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  font-family: var(--font-family-sans-serif); /* Ensure font consistency */
+  font-size: inherit; /* Ensure font size consistency */
+}
+
+#logout-form button:hover {
+  background-color: var(--sidebar-link-hover-bg-light);
+  color: var(--primary-color-light);
+  text-decoration: none;
+}
+
+
+/* Styling for dark theme */
+body.dark-mode {
+  background-color: var(--background-color-dark);
+  color: var(--text-color-dark);
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+  color: var(--primary-color-dark);
+}
+
+body.dark-mode a {
+  color: var(--link-color-dark);
+}
+
+body.dark-mode a:hover {
+  color: var(--primary-color-dark);
+}
+
+body.dark-mode .sidebar-nav {
+  background-color: var(--sidebar-bg-dark);
+  border-color: var(--border-color-dark);
+}
+
+body.dark-mode .sidebar-nav a {
+  color: var(--sidebar-link-color-dark);
+}
+
+body.dark-mode .sidebar-nav a:hover {
+  background-color: var(--sidebar-link-hover-bg-dark);
+  color: var(--primary-color-dark);
+}
+
+body.dark-mode .sidebar-nav h6 {
+    color: var(--secondary-color-dark);
+}
+
+body.dark-mode #logout-form button {
+    color: var(--sidebar-link-color-dark);
+}
+
+body.dark-mode #logout-form button:hover {
+    background-color: var(--sidebar-link-hover-bg-dark);
+    color: var(--primary-color-dark);
+}
+
+/* Pagination styling */
+.pagination {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.page-links a, .page-current {
+  display: inline-block;
+  padding: 0.5rem 0.75rem;
+  margin: 0 0.25rem;
+  border: 1px solid var(--border-color-light);
+  border-radius: 0.25rem;
+  color: var(--primary-color-light);
+}
+
+.page-links a:hover {
+  background-color: var(--primary-color-light);
+  color: var(--background-color-light); /* White text on hover */
+  text-decoration: none;
+}
+
+.page-current {
+  background-color: var(--primary-color-light);
+  color: var(--background-color-light); /* White text */
+  border-color: var(--primary-color-light);
+}
+
+body.dark-mode .page-links a {
+  border-color: var(--border-color-dark);
+  color: var(--primary-color-dark);
+}
+
+body.dark-mode .page-links a:hover {
+  background-color: var(--primary-color-dark);
+  color: var(--background-color-dark); /* Dark text on hover for dark mode */
+}
+
+body.dark-mode .page-current {
+  background-color: var(--primary-color-dark);
+  color: var(--background-color-dark); /* Dark text for dark mode */
+  border-color: var(--primary-color-dark);
+}
+
+/* Button styling (general) - for buttons outside sidebar */
+.btn {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.btn-primary {
+    background-color: var(--primary-color-light);
+    border-color: var(--primary-color-light);
+    color: #fff; /* White text on primary buttons */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Darken primary color on hover */
+    border-color: #0056b3;
+    color: #fff;
+}
+
+body.dark-mode .btn-primary {
+    background-color: var(--primary-color-dark);
+    border-color: var(--primary-color-dark);
+    color: var(--background-color-dark); /* Dark text for dark mode primary buttons */
+}
+
+body.dark-mode .btn-primary:hover {
+    background-color: #1e90ff; /* Lighter blue for dark mode hover */
+    border-color: #1e90ff;
+    color: var(--background-color-dark);
+}
+
+/* Theme toggle button styling */
+#theme-toggle {
+  display: block; /* Make it a block to allow margin auto */
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem; /* Bootstrap mb-3 equivalent if Bootstrap not fully loaded */
+  min-width: 120px; /* Give it a decent minimum width */
+  background-color: var(--secondary-color-light);
+  color: #fff;
+  border: 1px solid var(--secondary-color-light);
+}
+
+#theme-toggle:hover {
+  background-color: #5a6268; /* Darken secondary color on hover */
+  border-color: #545b62;
+}
+
+body.dark-mode #theme-toggle {
+  background-color: var(--secondary-color-dark);
+  color: var(--background-color-dark); /* Dark text for dark mode */
+  border: 1px solid var(--secondary-color-dark);
+}
+
+body.dark-mode #theme-toggle:hover {
+  background-color: #90989f; /* Lighter secondary for dark mode hover */
+  border-color: #858c93;
+}
+
+/* Refinements for Project/catalog/templates/index.html */
+
+/* Welcome Section on Index Page */
+.index-welcome-section h1 {
+  font-size: 2.8rem; /* Larger font for the main title */
+  color: var(--primary-color-light);
+  margin-bottom: 0.5rem;
+  text-align: center;
+  padding-top: 1rem;
+}
+
+body.dark-mode .index-welcome-section h1 {
+  color: var(--primary-color-dark);
+}
+
+.index-welcome-section p {
+  font-size: 1.15rem;
+  color: var(--secondary-color-light);
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+body.dark-mode .index-welcome-section p {
+  color: var(--secondary-color-dark);
+}
+
+/* Statistics Section on Index Page */
+.index-stats-section h2 {
+  font-size: 1.8rem;
+  color: var(--primary-color-light);
+  border-bottom: 2px solid var(--border-color-light);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+body.dark-mode .index-stats-section h2 {
+  color: var(--primary-color-dark);
+  border-bottom-color: var(--border-color-dark);
+}
+
+.index-stats-section ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.index-stats-section li {
+  background-color: var(--sidebar-bg-light); /* Use sidebar bg for contrast */
+  border: 1px solid var(--border-color-light);
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 0.75rem;
+  border-radius: 0.3rem;
+  font-size: 1.05rem;
+  display: flex; /* For aligning text and numbers if needed later */
+  justify-content: space-between; /* Example for alignment */
+}
+
+body.dark-mode .index-stats-section li {
+  background-color: var(--sidebar-bg-dark);
+  border-color: var(--border-color-dark);
+}
+
+.index-stats-section li strong {
+  color: var(--primary-color-light);
+}
+
+body.dark-mode .index-stats-section li strong {
+  color: var(--primary-color-dark);
+}
+
+/* Visit Counter on Index Page */
+.index-visit-counter {
+  text-align: center;
+  margin-top: 2.5rem;
+  font-size: 1rem;
+  color: var(--secondary-color-light);
+}
+
+body.dark-mode .index-visit-counter {
+  color: var(--secondary-color-dark);
+}
+
+/* Refinements for list pages (e.g., book_list.html, author_list.html) */
+
+.list-page-container h3 { /* Using h3 as per book_list.html */
+  font-size: 1.8rem; /* Consistent with index page section titles */
+  color: var(--primary-color-light);
+  border-bottom: 2px solid var(--border-color-light);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+body.dark-mode .list-page-container h3 {
+  color: var(--primary-color-dark);
+  border-bottom-color: var(--border-color-dark);
+}
+
+.item-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.item-list li {
+  background-color: var(--background-color-light);
+  border: 1px solid var(--border-color-light);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem; /* Space between items */
+  border-radius: 0.3rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.item-list li:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+body.dark-mode .item-list li {
+  background-color: var(--sidebar-bg-dark); /* Using a slightly lighter dark shade for items */
+  border-color: var(--border-color-dark);
+  box-shadow: 0 2px 4px rgba(255,255,255,0.05);
+}
+
+body.dark-mode .item-list li:hover {
+  box-shadow: 0 4px 8px rgba(255,255,255,0.1);
+}
+
+.item-list li a {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: var(--primary-color-light);
+}
+
+body.dark-mode .item-list li a {
+  color: var(--primary-color-dark);
+}
+
+.item-list li a:hover {
+  text-decoration: underline;
+}
+
+/* Styling for the author or other secondary info in list items */
+.item-list li .item-secondary-info {
+  font-size: 0.9rem;
+  color: var(--secondary-color-light);
+  margin-left: 0.5rem;
+}
+
+body.dark-mode .item-list li .item-secondary-info {
+  color: var(--secondary-color-dark);
+}
+
+.no-items-message {
+  font-size: 1.1rem;
+  color: var(--secondary-color-light);
+  text-align: center;
+  padding: 2rem;
+  background-color: var(--sidebar-bg-light);
+  border: 1px dashed var(--border-color-light);
+  border-radius: 0.3rem;
+  margin-top: 1.5rem;
+}
+
+body.dark-mode .no-items-message {
+  color: var(--secondary-color-dark);
+  background-color: var(--sidebar-bg-dark);
+  border-color: var(--border-color-dark);
 }

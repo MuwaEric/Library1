@@ -5,22 +5,29 @@
 {% endblock  %}
 
 {% block content %}
-    <h1>Mwesi Library </h1>
-    <p> Welcome to Mwesi Library, a web application developed
-         <em>Muwanika Eric</em> </p>
+    <div class="index-welcome-section">
+        <h1>Mwesi Library </h1>
+        <p> Welcome to Mwesi Library, a web application developed
+             <em>Muwanika Eric</em> </p>
+    </div>
 
-    <h2>Dynamic content </h2>
-     <p>The library has the following record counts </p>
-    <ul>
-        <li><strong>Books:</strong> {{ num_books }}</li>
-        <li><strong>Copies:</strong> {{ num_instances }} </li>
-        <li><strong>Copies available:</strong> {{ num_instances_available }} </li>
-        <li><strong>Total Number Of Authors:</strong> {{ num_authors }} </li>
-        <li><strong>Authors:</strong> {{ num_books }} </li>
-        <li><strong>Genre with C:</strong> {{ c_genre }} </li>
-        <li><strong>Genres with word Action:</strong> {{ genre_with_word_action }} </li>
-        <li><strong>Books with the word curse:</strong> {{ book_with_word_curse }} </li>
-    </ul>
-    <p>You have visited {{ num_visits }} time{{ num_visits|pluralize}} </p>
+    <div class="index-stats-section">
+        <h2>Dynamic content </h2>
+        <p>The library has the following record counts </p>
+        <ul>
+            <li><strong>Books:</strong> {{ num_books }}</li>
+            <li><strong>Copies:</strong> {{ num_instances }} </li>
+            <li><strong>Copies available:</strong> {{ num_instances_available }} </li>
+            <li><strong>Total Number Of Authors:</strong> {{ num_authors }} </li>
+            <li><strong>Authors:</strong> {{ num_books }} </li> {# This seems to be a duplicate of num_books, assuming it's meant to be something else or just a display bug in original template #}
+            <li><strong>Genre with C:</strong> {{ c_genre }} </li>
+            <li><strong>Genres with word Action:</strong> {{ genre_with_word_action }} </li>
+            <li><strong>Books with the word curse:</strong> {{ book_with_word_curse }} </li>
+        </ul>
+    </div>
+
+    <div class="index-visit-counter">
+        <p>You have visited {{ num_visits }} time{{ num_visits|pluralize}} </p>
+    </div>
 
 {% endblock  %}

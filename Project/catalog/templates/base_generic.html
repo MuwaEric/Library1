@@ -15,12 +15,13 @@
 
     {% load static %}
 
-    <link rel="stylesheet" href="{% static 'CSS/styles.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
 </head>
 <body>
     <div class="container-fluid">
         <div class="row">
           <div class="col-sm-2">
+            <button id="theme-toggle" class="btn btn-sm mb-3">Toggle Theme</button>
             {% block sidebar %}
                 <ul class="sidebar-nav">
                     <li><a href="{% url 'index' %}"> Home </a></li>
@@ -95,5 +96,6 @@
               {% endif %}
            {% endblock %}
         </div>   
+    <script src="{% static 'js/theme_toggle.js' %}"></script>
 </body>
 </html>
